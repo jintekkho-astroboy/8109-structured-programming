@@ -36,7 +36,7 @@ function displayTasks(tasks) {
 
 function addTask(tasks, newName, newDateDue, newUrgency) {
     let newTask = {
-        id: Math.floor(Math.random() * 10000) + 1,
+        id: Math.floor(Math.random() * 10000) + 1, //in actual production code, the Math.random should not be used as numbers will be randomly assigned
         name: newName,
         dateDue: newDateDue,
         urgency: newUrgency
@@ -44,5 +44,25 @@ function addTask(tasks, newName, newDateDue, newUrgency) {
     tasks.push(newTask);
 }
 
+function deleteTask(tasks, idToDelete) {
+    // goal: given id, find its index number
+    let i = 0;
+    let wantedIndex = -1; // -1 does not found
+       while (i < tasks.length) {
+        //console.log(tasks[i]);
+        if (tasks[i].id == idToDelete) {
+            wantedIndex = i;
+            break; // the code immedately finished
+        }
+        i=i+1;
+    }
+    // if wantedIndex is not -1, then we have found inded to delete
+    if (wantedIndex != -1) {
+        tasks.splice(wantedIndex,1);
+    }
+}
+
+
 addTask(tasks, "Clean the bathroom", "2026-05-04", 5);
 displayTasks(tasks);
+deleteTask(tasks,1);
