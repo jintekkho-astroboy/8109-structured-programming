@@ -1,3 +1,5 @@
+const prompt = require("prompt-sync")
+
 //1. define the state and create some mock data 
 let tasks = [
     {
@@ -84,9 +86,44 @@ function updateTask(tasks, idToUpdate, newName, newDateDue, newUrgency) {
     }
 }
 
-addTask(tasks, "Clean the bathroom", "2026-05-04", 5);
-updateTask(tasks, 2, "Clean the master bedroom", "2026-05-31", 1);
-displayTasks(tasks);
-deleteTask(tasks,1);
-console.log("After delete task");
-displayTasks(tasks);
+// the starting point of the JavaScript program
+function main() {
+
+    while(true) {
+        console.log("Welcome to Getting Things Done");
+            console.log("1. Display all todos");
+            console.log("2. Add new todo");
+            console.log("3. Update todo");
+            console.log("4. Delete todo");
+            console.log("5.Quit");
+            let choice = parseInt(prompt("Please enter a choice: "));
+            if (choice ==1) {
+                console.log();
+                console.log("Show all tasks: ");
+                displayTasks(tasks);
+            }
+            if (choice ==2) {
+                console.log("Create a new task");
+                let newName = prompt("Enter the name of the new task: ");
+                let newDateDue = prompt("Enter the date due (YYYY-MM-DD: ");
+                let newUrgency = prompt("Enter the new urgency, 1 = less urgent, 5 = very urgent: ");
+                addTask(tasks, newName, newDateDue, newUrgency);
+                console.log("New task has created!");
+            }
+            if (choice==5) {
+                break;
+            }
+    }
+ 
+}
+
+function test() {
+    addTask(tasks, "Clean the bathroom", "2026-05-04", 5);
+    updateTask(tasks, 2, "Clean the master bedroom", "2026-05-31", 1);
+    displayTasks(tasks);
+    deleteTask(tasks,1);
+    console.log("After delete task");
+    displayTasks(tasks);
+}
+
+
