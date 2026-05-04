@@ -1,4 +1,4 @@
-const prompt = require("prompt-sync")
+const prompt = require("prompt-sync")();
 
 //1. define the state and create some mock data 
 let tasks = [
@@ -107,7 +107,7 @@ function main() {
                 let newName = prompt("Enter the name of the new task: ");
                 let newDateDue = prompt("Enter the date due (YYYY-MM-DD: ");
                 let newUrgency = prompt("Enter the new urgency, 1 = less urgent, 5 = very urgent: ");
-                
+
                 addTask(tasks, newName, newDateDue, newUrgency);
                 console.log("New task has created!");
             }
@@ -125,6 +125,15 @@ function main() {
                 console.log("Task updated");
             
             }
+            if (choice==4) {
+                console.log();
+                console.log("Delete task");
+                displayTasks(tasks);
+                console.log();
+                let idToDelete = parseInt(prompt("Enter the ID to delete: "));
+
+                deleteTask(tasks,idToDelete);
+            }
             if (choice==5) {
                 break;
             }
@@ -141,4 +150,4 @@ function test() {
     displayTasks(tasks);
 }
 
-
+main();
