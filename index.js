@@ -107,8 +107,23 @@ function main() {
                 let newName = prompt("Enter the name of the new task: ");
                 let newDateDue = prompt("Enter the date due (YYYY-MM-DD: ");
                 let newUrgency = prompt("Enter the new urgency, 1 = less urgent, 5 = very urgent: ");
+                
                 addTask(tasks, newName, newDateDue, newUrgency);
                 console.log("New task has created!");
+            }
+            if (choice ==3) {
+                console.log();
+                console.log("Update task");
+                displayTasks(tasks);
+
+                let idToUpdate = parseInt(prompt("Enter the task ID to update: "));
+                let newName = prompt("Enter the name of the new task: ");
+                let newDateDue = prompt("Enter the date due YYYY-MM-DD for the new tasks: ");
+                let newUrgency = prompt("Enter the new urgency, 1 = least urgency, 5 = very urgency: ");
+
+                updateTask(tasks, idToUpdate, newName, newDateDue, newUrgency);
+                console.log("Task updated");
+            
             }
             if (choice==5) {
                 break;
