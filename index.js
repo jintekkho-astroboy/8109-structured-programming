@@ -62,7 +62,31 @@ function deleteTask(tasks, idToDelete) {
     }
 }
 
+function updateTask(tasks, idToUpdate, newName, newDateDue, newUrgency) {
+    let modifiedTask = {
+        id: idToUpdate,
+        name: newName,
+        dateDue: newDateDue,
+        urgency: newUrgency
+    }
+
+    let indexToUpdate = -1;
+    let i = 0;
+    while (i < tasks.length) {
+        if (tasks[i].id == idToUpdate) {
+            indexToUpdate = i;
+            break;
+        }
+        i=i+1;
+    }
+    if (indexToUpdate != -1) {
+        tasks[indexToUpdate] = modifiedTask;
+    }
+}
 
 addTask(tasks, "Clean the bathroom", "2026-05-04", 5);
+updateTask(tasks, 2, "Clean the master bedroom", "2026-05-31", 1);
 displayTasks(tasks);
 deleteTask(tasks,1);
+console.log("After delete task");
+displayTasks(tasks);
