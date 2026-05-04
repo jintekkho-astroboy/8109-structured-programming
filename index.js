@@ -33,4 +33,16 @@ function displayTasks(tasks) {
         i=i+1;
     }
 }
+
+function addTask(tasks, newName, newDateDue, newUrgency) {
+    let newTask = {
+        id: Math.floor(Math.random() * 10000) + 1,
+        name: newName,
+        dateDue: newDateDue,
+        urgency: newUrgency
+    }
+    tasks.push(newTask);
+}
+
+addTask(tasks, "Clean the bathroom", "2026-05-04", 5);
 displayTasks(tasks);
